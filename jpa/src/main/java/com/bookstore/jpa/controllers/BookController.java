@@ -21,7 +21,7 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @PostMapping("/bookstore/books")
+    @PostMapping
     public ResponseEntity<BookModel> saveBook(@RequestBody BookRecordDto bookRecordDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(bookService.saveBook(bookRecordDto));
     }
