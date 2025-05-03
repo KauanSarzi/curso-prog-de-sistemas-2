@@ -12,7 +12,7 @@ public class InscricaoModel implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue 
     private UUID id;
 
     private Date dataInscricao;
@@ -24,6 +24,9 @@ public class InscricaoModel implements Serializable {
     private VagaEstagioModel vaga; // OBJETO CRIADO COM O MESMOMNOME DO MAPPED BY
 
 
+    public InscricaoModel(){
+
+    }
 
 
 

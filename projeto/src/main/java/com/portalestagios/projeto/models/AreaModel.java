@@ -12,7 +12,7 @@ public class AreaModel implements Serializable {
 
     @Id
     @GeneratedValue
-    private UUID idArea;
+    private UUID id;
 
     private String name;
 
@@ -43,12 +43,12 @@ public class AreaModel implements Serializable {
         this.name = name;
     }
 
-    public UUID getIdArea() {
-        return idArea;
+    public UUID getId() {
+        return id;
     }
 
-    public void setIdArea(UUID idArea) {
-        this.idArea = idArea;
+    public void setId(UUID id) {
+        this.id = id;
     }
 
 

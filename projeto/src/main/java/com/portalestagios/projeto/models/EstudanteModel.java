@@ -9,7 +9,7 @@ public class EstudanteModel implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue 
     private UUID id;
 
     private String nome;
@@ -17,6 +17,10 @@ public class EstudanteModel implements Serializable {
     private int anoIngresso;
     private String curso; 
 
+
+    public EstudanteModel(){
+
+    }
 
     public UUID getId() {
         return id;
