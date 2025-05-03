@@ -13,24 +13,27 @@ public class InscricaoModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID idinscricao;
+    private UUID id;
 
     private Date dataInscricao;
     private String status;
     private String mensagemApresentacao;
 
+    @ManyToOne
+    @JoinColumn(name = "vaga_id") //CHAVE ESTRANGEIRA PARA FAZER O RELACIONAMENTO
+    private VagaEstagioModel vaga; // OBJETO CRIADO COM O MESMOMNOME DO MAPPED BY
 
 
-    
 
 
 
-    public UUID getIdinscricao() {
-        return idinscricao;
+
+    public UUID getId() {
+        return id;
     }
 
-    public void setIdinscricao(UUID idinscricao) {
-        this.idinscricao = idinscricao;
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public Date getDataInscricao() {
@@ -55,6 +58,15 @@ public class InscricaoModel implements Serializable {
 
     public void setMensagemApresentacao(String mensagemApresentacao) {
         this.mensagemApresentacao = mensagemApresentacao;
+    }
+
+    public VagaEstagioModel getVaga(){
+        return vaga;
+    }
+
+    public void setVaga(VagaEstagioModel vaga){
+        this.vaga = vaga;
+        
     }
 
 

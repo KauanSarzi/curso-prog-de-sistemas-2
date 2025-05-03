@@ -4,12 +4,13 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-
+import jakarta.persistence.Column;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
+
 
 @Entity
 @Table(name = "TB_EMPRESA") //NOME DA CLASSE QUANDO FOR LEVADA A TABELA DA BASE DE DADOS
@@ -19,9 +20,9 @@ public class EmpresaModel implements Serializable{
     
     @Id
     @GeneratedValue
-    private UUID idempresa;
+    private UUID id;
 
-    //@Column
+    @Column(nullable = false, unique = true)
     private String cnpj;
 
     //@Column
@@ -56,12 +57,12 @@ public class EmpresaModel implements Serializable{
     }
 
     //get e set
-    public UUID getIdEmpresa() {
-        return idempresa;
+    public UUID getId() {
+        return id;
     }
 
-    public void setIdEmpresa(UUID idempresa) {
-        this.idempresa = idempresa;
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public String getNomeFantasia() {

@@ -24,7 +24,7 @@ public class PublisherModel implements Serializable {
     @Column(nullable = false, unique = true)//crio a coluna com parametros, nesse caso se o titulo pode ser nulo ou nao e os titulos nao podem ser iguais por conta do unique
     private String name;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) // PARA EVITAR ERRO DE SERIALIZAÇAO, POIS AS VEZES O LIVRO N ESTA DISPONIVEL
+    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY) // PARA EVITAR ERRO DE SERIALIZAÇAO, POIS AS VEZES O LIVRO N ESTA DISPONIVEL
     @OneToMany(mappedBy = "publisher", fetch = FetchType.LAZY) // MAPPED BY DEFINE QUEM É O RESPONSAVEL POR ESSE RELACIONAMENTO, O publisher FOI CRIADO LA EM BOOKMODEL
     private Set<BookModel> books = new HashSet<>(); // COLEÇAO DE LIVROS, COLEÇAO DA ENTIDADE BOOKMODEL
 

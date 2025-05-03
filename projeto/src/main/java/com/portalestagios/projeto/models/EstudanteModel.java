@@ -10,7 +10,7 @@ public class EstudanteModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID idEstudante;
+    private UUID id;
 
     private String nome;
     private String email;
@@ -18,12 +18,12 @@ public class EstudanteModel implements Serializable {
     private String curso; 
 
 
-    public UUID getIdEstudante() {
-        return idEstudante;
+    public UUID getId() {
+        return id;
     }
 
-    public void setIdEstudante(UUID idEstudante) {
-        this.idEstudante = idEstudante;
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public String getNome() {
