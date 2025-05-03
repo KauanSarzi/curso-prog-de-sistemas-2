@@ -1,6 +1,7 @@
 package com.portalestagios.projeto.models;
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -16,6 +17,18 @@ public class EstudanteModel implements Serializable {
     private String email;
     private int anoIngresso;
     private String curso; 
+
+
+    //RELAÇAO COM INSCRIÇAO
+    @OneToMany(mappedBy = "estudante", cascade = CascadeType.ALL)
+    private List<InscricaoModel> inscricoes;
+
+
+    //RELAÇAO COM AREAS
+    @ManyToMany 
+    @JoinTable(name = "tb_estudante_area", joinColumns = @JoinColumn(name = "estudante_id"), inverseJoinColumns = @JoinColumn(name = "area_id"))
+    private List<AreaModel> areas;
+
 
 
     public EstudanteModel(){
@@ -60,6 +73,22 @@ public class EstudanteModel implements Serializable {
 
     public void setCurso(String curso) {
         this.curso = curso;
+    }
+    
+    public List<InscricaoModel> getInscricoes() {
+        return inscricoes;
+    }
+    
+    public void setInscricoes(List<InscricaoModel> inscricoes) {
+        this.inscricoes = inscricoes;
+    }
+
+    public List<AreaModel> getAreas() {
+        return areas;
+    }
+    
+    public void setAreas(List<AreaModel> areas) {
+        this.areas = areas;
     }
     
 

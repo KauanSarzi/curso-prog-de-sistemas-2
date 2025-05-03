@@ -1,7 +1,7 @@
 package com.portalestagios.projeto.models;
 import java.util.*;
 import java.io.Serializable;
-import java.util.UUID;
+
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -16,9 +16,17 @@ public class AreaModel implements Serializable {
 
     private String name;
 
+    //RELAÇAO COM VAGA ESTAGIO
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //PARA EVITAR ERRO DE SERIALIZAÇAO POIS AS VEZES A VAGA NAO ESTA DISPONIVEL
     @ManyToMany(mappedBy = "areas", fetch = FetchType.LAZY)
     private List<VagaEstagioModel> vagas;
+
+
+    //RELAÇAO COM ESTUDANTE
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //PARA EVITAR ERRO DE SERIALIZAÇAO POIS AS VEZES A VAGA NAO ESTA DISPONIVEL
+    @ManyToMany(mappedBy = "areas", fetch = FetchType.LAZY)
+    private List<EstudanteModel> estudantes;
+
 
 
 
@@ -52,6 +60,21 @@ public class AreaModel implements Serializable {
     }
 
 
-    //GET E SET VAGAS
+    public List<VagaEstagioModel> getVagas() {
+        return vagas;
+    }
+    
+    public void setVagas(List<VagaEstagioModel> vagas) {
+        this.vagas = vagas;
+    }
+    
+    public List<EstudanteModel> getEstudantes() {
+        return estudantes;
+    }
+    
+    public void setEstudantes(List<EstudanteModel> estudantes) {
+        this.estudantes = estudantes;
+    }
+    
     
 }

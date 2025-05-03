@@ -2,12 +2,7 @@ package com.portalestagios.projeto.models;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.Set;
 import java.util.UUID;
-import java.util.HashSet;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import java.util.List;
 
 
@@ -28,21 +23,19 @@ public class VagaEstagioModel implements Serializable {
     private int cargaHoraria;
     
  
+    //RELAÇAO COM EMPRESA
     @ManyToOne // N vagas para 1 EMPRESA
     @JoinColumn(name = "empresa_id") //CHAVE ESTRANGEIRA PARA FAZER O RELACIONAMENTO
     private EmpresaModel empresa;   // esse objeto tem que ter o mesmo nome do mappedby
 
+    //RELAÇAO COM INSCRIÇAO
     @OneToMany(mappedBy = "vaga", cascade =  CascadeType.ALL)
     private List<InscricaoModel> inscricaoVaga;
 
-    @ManyToMany
+    //RELAÇAO COM AREA
+    @ManyToMany 
     @JoinTable(name = "tb_vaga_area", joinColumns = @JoinColumn(name = "vaga_id"), inverseJoinColumns = @JoinColumn(name = "area_id"))
-    private Set<AreaModel> areas = new HashSet<>();
-
-
-
-
-
+    private List<AreaModel> areas;
 
 
 
@@ -128,7 +121,14 @@ public class VagaEstagioModel implements Serializable {
     }
 
 
-    //GETT E SET AREA
+    public List<AreaModel> getAreas() {
+        return areas;
+    }
+    
+    public void setAreas(List<AreaModel> areas) {
+        this.areas = areas;
+    }
+    
 
     
 }

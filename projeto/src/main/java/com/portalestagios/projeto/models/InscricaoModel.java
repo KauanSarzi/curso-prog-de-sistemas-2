@@ -19,9 +19,18 @@ public class InscricaoModel implements Serializable {
     private String status;
     private String mensagemApresentacao;
 
+    //RELAÇAO COM VAGA
     @ManyToOne
     @JoinColumn(name = "vaga_id") //CHAVE ESTRANGEIRA PARA FAZER O RELACIONAMENTO
     private VagaEstagioModel vaga; // OBJETO CRIADO COM O MESMOMNOME DO MAPPED BY
+
+    
+    //RELAÇAO COM ESTUDANTE
+    @ManyToOne
+    @JoinColumn(name = "estudante_id") //CHAVE ESTRANGEIRA PARA FAZER O RELACIONAMENTO
+    private EstudanteModel estudante; // OBJETO CRIADO COM O MESMOMNOME DO MAPPED BY
+
+    
 
 
     public InscricaoModel(){
@@ -71,6 +80,15 @@ public class InscricaoModel implements Serializable {
         this.vaga = vaga;
         
     }
+
+    public EstudanteModel getEstudante() {
+        return estudante;
+    }
+    
+    public void setEstudante(EstudanteModel estudante) {
+        this.estudante = estudante;
+    }
+    
 
 
 
