@@ -19,7 +19,6 @@ public class EstudanteModel implements Serializable {
     private String nome;
 
     @Column(nullable = false, unique = true) // email deve ser unico entre os estudantes
-    //@Email
     private String email;
 
     @Column(nullable = false)

@@ -33,7 +33,6 @@ public class EmpresaModel implements Serializable{
     private String nomeFantasia;
     
     @Column(nullable = false, unique = true) //email tem que ser unico de cada empresa
-    //@Email, para validar o email, ver se esta no padrao de um e mail, porem precisarei adc a dependencia : spring-boot-starter-validation
     private String emailContato;
 
     @Column(nullable = false)
