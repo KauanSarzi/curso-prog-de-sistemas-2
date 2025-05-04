@@ -2,6 +2,7 @@ package com.portalestagios.projeto.models;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Column;
@@ -10,6 +11,9 @@ import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 
 @Entity
@@ -22,39 +26,35 @@ public class EmpresaModel implements Serializable{
     @GeneratedValue
     private UUID id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true) //cnpj é unico, e se nao existe cnpj nao existe empresa
     private String cnpj;
 
-    //@Column
+    @Column(nullable = false) 
     private String nomeFantasia;
     
-    //@Column
+    @Column(nullable = false, unique = true) //email tem que ser unico de cada empresa
+    //@Email, para validar o email, ver se esta no padrao de um e mail, porem precisarei adc a dependencia : spring-boot-starter-validation
     private String emailContato;
 
-   //@Column(nullable = false, unique = true) //crio a coluna com parametros, nesse caso o endereço nao pode ser nulo e os endereços nao podem ser iguais por conta do unique
+    @Column(nullable = false)
     private String endereco;
 
-  //@Column(nullable = false, unique = true)
+  //@Column(length = ?) decidir se iremos limitar ou nao a descriçao
     private String descricao;
 
+    @Column(nullable = false, unique = true)
+    private String telefoneContato;
 
-    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL) // O MAPPEDBY DEFINE QUEM É O RESPONSAVEL POR ESSE RELACIONAMENTO E O CASCADE FAZ COM QUE SEMPRE QUE EU FIZER ALTERAÇOES AMBAS ENTIDADES RELACIONADAS SOFRERAO ALTERAÇOES
+    @Column(nullable = false)
+    private String ramoAtuacao;
+
+
+    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL, fetch = FetchType.LAZY) // O MAPPEDBY DEFINE QUEM É O RESPONSAVEL POR ESSE RELACIONAMENTO E O CASCADE FAZ COM QUE SEMPRE QUE EU FIZER ALTERAÇOES AMBAS ENTIDADES RELACIONADAS SOFRERAO ALTERAÇOES
+   // @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)  // nesse caso é para se nao quiser retornar a empresa junto com a vaga
     private List<VagaEstagioModel> vagasPublicadas;
 
 
     
-
-    // CONSTRUTORES
-    public EmpresaModel() {
-    }
-
-    public EmpresaModel(String nomeFantasia, String cnpj, String emailContato, String endereco, String descricao) {
-        this.nomeFantasia = nomeFantasia;
-        this.cnpj = cnpj;
-        this.emailContato = emailContato;
-        this.endereco = endereco;
-        this.descricao = descricao;
-    }
 
     //get e set
     public UUID getId() {
@@ -105,6 +105,22 @@ public class EmpresaModel implements Serializable{
         this.descricao = descricao;
     }
 
+    public String getTelefoneContato() {
+        return telefoneContato;
+    }
+    
+    public void setTelefoneContato(String telefoneContato) {
+        this.telefoneContato = telefoneContato;
+    }
+    
+    public String getRamoAtuacao() {
+        return ramoAtuacao;
+    }
+    
+    public void setRamoAtuacao(String ramoAtuacao) {
+        this.ramoAtuacao = ramoAtuacao;
+    }
+    
 
     public List<VagaEstagioModel> getVagasPublicadas() {
         return vagasPublicadas;

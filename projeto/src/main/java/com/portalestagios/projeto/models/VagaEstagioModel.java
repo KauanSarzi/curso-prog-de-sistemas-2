@@ -3,6 +3,9 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.UUID;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 
@@ -15,12 +18,29 @@ public class VagaEstagioModel implements Serializable {
     @GeneratedValue
     private UUID id;
 
+    @Column(nullable = false)
     private String titulo;
+
+    @Column(nullable = false) //definir se limitara tamanho ou nao
     private String descricao;
+
+    @Column(nullable = false)
     private Date dataPublicacao;
+
+    @Column(nullable = false)
     private Boolean ativo;
+
+    @Column(nullable = false)
     private Double salario;
+
+    @Column(nullable = false)
     private int cargaHoraria;
+
+    @Column(nullable = false)
+    private String modalidade; //hibrido, presencial ou online
+
+
+
     
  
     //RELAÇAO COM EMPRESA
@@ -29,20 +49,16 @@ public class VagaEstagioModel implements Serializable {
     private EmpresaModel empresa;   // esse objeto tem que ter o mesmo nome do mappedby
 
     //RELAÇAO COM INSCRIÇAO
-    @OneToMany(mappedBy = "vaga", cascade =  CascadeType.ALL)
+    @OneToMany(mappedBy = "vaga", cascade =  CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) 
     private List<InscricaoModel> inscricaoVaga;
 
     //RELAÇAO COM AREA
-    @ManyToMany 
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "tb_vaga_area", joinColumns = @JoinColumn(name = "vaga_id"), inverseJoinColumns = @JoinColumn(name = "area_id"))
     private List<AreaModel> areas;
 
 
-
-
-    public VagaEstagioModel(){
-
-    }
 
 
 
@@ -102,6 +118,16 @@ public class VagaEstagioModel implements Serializable {
     public void setCargaHoraria(int cargaHoraria) {
         this.cargaHoraria = cargaHoraria;
     }
+
+
+    public String getModalidade() {
+        return modalidade;
+    }
+    
+    public void setModalidade(String modalidade) {
+        this.modalidade = modalidade;
+    }
+    
 
     public EmpresaModel getEmpresa(){
         return empresa;

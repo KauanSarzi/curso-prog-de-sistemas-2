@@ -14,27 +14,23 @@ public class AreaModel implements Serializable {
     @GeneratedValue
     private UUID id;
 
+    @Column(nullable = false, unique = true) //nao pode haver duas areas com o mesmo nome
     private String name;
 
     //RELAÇAO COM VAGA ESTAGIO
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //PARA EVITAR ERRO DE SERIALIZAÇAO POIS AS VEZES A VAGA NAO ESTA DISPONIVEL
-    @ManyToMany(mappedBy = "areas", fetch = FetchType.LAZY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //PARA EVITAR ERRO DE SERIALIZAÇAO E LOOPS
+    @ManyToMany(mappedBy = "areas", fetch = FetchType.LAZY) //GARANTE QUE vagas NAO SERA CARREGADO AUTOMATICAMENTE QUANDO A ENTIDADE AREAMODEL FOR BUSCADA, vagas SO SERA CARREGADA QUANDO SOLICITADA
     private List<VagaEstagioModel> vagas;
 
 
     //RELAÇAO COM ESTUDANTE
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //PARA EVITAR ERRO DE SERIALIZAÇAO POIS AS VEZES A VAGA NAO ESTA DISPONIVEL
-    @ManyToMany(mappedBy = "areas", fetch = FetchType.LAZY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //PARA EVITAR ERRO DE SERIALIZAÇAO E LOOPS
+    @ManyToMany(mappedBy = "areas", fetch = FetchType.LAZY) //MESMA COISA QUE O FETCH ACIMA
     private List<EstudanteModel> estudantes;
 
 
 
 
-
-    //construtores
-    public AreaModel(){
-
-    }
 
     public AreaModel( String name) {
         this.name = name;

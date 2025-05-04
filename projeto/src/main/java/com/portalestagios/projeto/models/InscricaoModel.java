@@ -5,6 +5,8 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 @Entity
 @Table(name = "TB_INSCRICAO")
@@ -15,27 +17,34 @@ public class InscricaoModel implements Serializable {
     @GeneratedValue 
     private UUID id;
 
+
+    @Column(nullable = false) 
     private Date dataInscricao;
+
+    @Column(nullable = false)
+    //@Enumerated(EnumType.STRING) avaliar para ver se o jpa suporta 
     private String status;
+
+    //@Column(length= 500) define o tamanho maximo da mensagem
     private String mensagemApresentacao;
 
     //RELAÇAO COM VAGA
     @ManyToOne
     @JoinColumn(name = "vaga_id") //CHAVE ESTRANGEIRA PARA FAZER O RELACIONAMENTO
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) 
     private VagaEstagioModel vaga; // OBJETO CRIADO COM O MESMOMNOME DO MAPPED BY
 
     
     //RELAÇAO COM ESTUDANTE
     @ManyToOne
     @JoinColumn(name = "estudante_id") //CHAVE ESTRANGEIRA PARA FAZER O RELACIONAMENTO
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) 
     private EstudanteModel estudante; // OBJETO CRIADO COM O MESMOMNOME DO MAPPED BY
 
     
 
 
-    public InscricaoModel(){
-
-    }
+   
 
 
 
