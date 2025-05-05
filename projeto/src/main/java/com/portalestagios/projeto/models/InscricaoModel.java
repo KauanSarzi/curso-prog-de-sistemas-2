@@ -41,13 +41,9 @@ public class InscricaoModel implements Serializable {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) 
     private EstudanteModel estudante; // OBJETO CRIADO COM O MESMOMNOME DO MAPPED BY
 
-    
 
 
-   
-
-
-
+    //getters e setters
 
     public UUID getId() {
         return id;
