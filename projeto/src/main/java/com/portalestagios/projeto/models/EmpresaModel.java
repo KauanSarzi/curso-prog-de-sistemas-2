@@ -55,79 +55,50 @@ public class EmpresaModel implements Serializable{
 
     
 
-    //get e set
-    public UUID getId() {
-        return id;
+    public EmpresaModel(){
     }
 
-    public void setId(UUID id) {
+    public EmpresaModel(UUID id, String cnpj, String nomeFantasia, String emailContato, String endereco, String descricao, String telefoneContato, String ramoAtuacao) {
         this.id = id;
-    }
-
-    public String getNomeFantasia() {
-        return nomeFantasia;
-    }
-
-    public void setNomeFantasia(String nomeFantasia) {
-        this.nomeFantasia = nomeFantasia;
-    }
-
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
-    }
-
-    public String getEmailContato() {
-        return emailContato;
-    }
-
-    public void setEmailContato(String emailContato) {
+        this.nomeFantasia = nomeFantasia;
         this.emailContato = emailContato;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
         this.endereco = endereco;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public String getTelefoneContato() {
-        return telefoneContato;
-    }
-    
-    public void setTelefoneContato(String telefoneContato) {
         this.telefoneContato = telefoneContato;
-    }
-    
-    public String getRamoAtuacao() {
-        return ramoAtuacao;
-    }
-    
-    public void setRamoAtuacao(String ramoAtuacao) {
         this.ramoAtuacao = ramoAtuacao;
     }
-    
 
-    public List<VagaEstagioModel> getVagasPublicadas() {
-        return vagasPublicadas;
-    }
+
+
+
+
+    public UUID getId() { return id; }
+    public void setId(UUID id) { this.id = id; }
     
-    public void setVagasPublicadas(List<VagaEstagioModel> vagasPublicadas) {
-        this.vagasPublicadas = vagasPublicadas;
-    }
+    public String getCnpj() { return cnpj; }
+    public void setCnpj(String cnpj) { this.cnpj = cnpj; }
+
+    public String getNomeFantasia() { return nomeFantasia; }
+    public void setNomeFantasia(String nomeFantasia) { this.nomeFantasia = nomeFantasia; }
+
+    public String getEmailContato() { return emailContato; }
+    public void setEmailContato(String emailContato) { this.emailContato = emailContato; }
+
+    public String getEndereco() { return endereco; }
+    public void setEndereco(String endereco) { this.endereco = endereco; }
+
+    public String getDescricao() { return descricao; }
+    public void setDescricao(String descricao) { this.descricao = descricao; }
+
+    public String getTelefoneContato() { return telefoneContato; }
+    public void setTelefoneContato(String telefoneContato) { this.telefoneContato = telefoneContato; }
+    
+    public String getRamoAtuacao() { return ramoAtuacao; }
+    public void setRamoAtuacao(String ramoAtuacao) { this.ramoAtuacao = ramoAtuacao; }
+
+    public List<VagaEstagioModel> getVagasPublicadas() { return vagasPublicadas; }  
+    public void setVagasPublicadas(List<VagaEstagioModel> vagasPublicadas) { this.vagasPublicadas = vagasPublicadas; }
 
 
     

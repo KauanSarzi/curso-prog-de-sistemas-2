@@ -26,42 +26,27 @@ public class UserModel implements Serializable {
     @Column(nullable = false)
     private String senha;
 
-   // @Enumerated(EnumType.STRING)
-   // @Column(nullable = false)
-  //  private TipoAcesso tipoacesso; ou collections singleton
+    // @Enumerated(EnumType.STRING)
+    // @Column(nullable = false)
+   //  private TipoAcesso tipoacesso; ou collections singleton
 
+    public UserModel(){}
 
-  // Getters e Setters
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
+    public UserModel(UUID id, String login, String senha) {
         this.id = id;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
         this.login = login;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
         this.senha = senha;
     }
 
 
+  // Getters e Setters
+    public UUID getId() { return id; }
+    public void setId(UUID id) { this.id = id; }
 
+    public String getLogin() { return login; }
+    public void setLogin(String login) { this.login = login; }
 
+    public String getSenha() { return senha; }
+    public void setSenha(String senha) { this.senha = senha; }
 
-
-
-
-    
 }

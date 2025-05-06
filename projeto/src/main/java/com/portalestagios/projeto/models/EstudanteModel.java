@@ -12,7 +12,7 @@ public class EstudanteModel implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue 
+    @GeneratedValue
     private UUID id;
 
     @Column(nullable = false)
@@ -34,7 +34,6 @@ public class EstudanteModel implements Serializable {
     private String periodoAtual;
 
 
-
     //RELAÇAO COM INSCRIÇAO
     @OneToMany(mappedBy = "estudante", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //evita com que a resposta json do estudante tenha uma lista completa de inscriçoe, e tbm evita loop
@@ -48,80 +47,46 @@ public class EstudanteModel implements Serializable {
 
 
 
-    public UUID getId() {
-        return id;
+    public EstudanteModel() {
     }
 
-    public void setId(UUID id) {
+    public EstudanteModel(UUID id, String nome, String email, int anoIngresso, String curso, String matricula, String periodoAtual) {
         this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
         this.email = email;
-    }
-
-    public int getAnoIngresso() {
-        return anoIngresso;
-    }
-
-    public void setAnoIngresso(int anoIngresso) {
         this.anoIngresso = anoIngresso;
-    }
-
-    public String getCurso() {
-        return curso;
-    }
-
-    public void setCurso(String curso) {
         this.curso = curso;
-    }
-
-
-    public String getMatricula() {
-        return matricula;
-    }
-    
-    public void setMatricula(String matricula) {
         this.matricula = matricula;
-    }
-    
-    public String getPeriodoAtual() {
-        return periodoAtual;
-    }
-    
-    public void setPeriodoAtual(String periodoAtual) {
         this.periodoAtual = periodoAtual;
     }
-    
 
     
-    public List<InscricaoModel> getInscricoes() {
-        return inscricoes;
-    }
-    
-    public void setInscricoes(List<InscricaoModel> inscricoes) {
-        this.inscricoes = inscricoes;
-    }
+    public UUID getId() { return id; }
+    public void setId(UUID id) { this.id = id; }
 
-    public List<AreaModel> getAreas() {
-        return areas;
-    }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+
+    public int getAnoIngresso() { return anoIngresso; }
+    public void setAnoIngresso(int anoIngresso) { this.anoIngresso = anoIngresso; }
+
+    public String getCurso() { return curso; }
+    public void setCurso(String curso) { this.curso = curso; }
+
+    public String getMatricula() { return matricula; }
+    public void setMatricula(String matricula) { this.matricula = matricula; }
+
+    public String getPeriodoAtual() { return periodoAtual; }
+    public void setPeriodoAtual(String periodoAtual) { this.periodoAtual = periodoAtual; }
     
-    public void setAreas(List<AreaModel> areas) {
-        this.areas = areas;
-    }
+    public List<InscricaoModel> getInscricoes() { return inscricoes; }   
+    public void setInscricoes(List<InscricaoModel> inscricoes) { this.inscricoes = inscricoes; }
+
+    public List<AreaModel> getAreas() { return areas; }  
+    public void setAreas(List<AreaModel> areas) { this.areas = areas; }
     
 
 

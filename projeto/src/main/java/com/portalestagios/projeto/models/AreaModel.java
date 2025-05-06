@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Entity
 @Table(name = "TB_AREA")
 public class AreaModel implements Serializable {
+   
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -15,7 +16,7 @@ public class AreaModel implements Serializable {
     private UUID id;
 
     @Column(nullable = false, unique = true) //nao pode haver duas areas com o mesmo nome
-    private String name;
+    private String nome;
 
     //RELAÇAO COM VAGA ESTAGIO
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //PARA EVITAR ERRO DE SERIALIZAÇAO E LOOPS
@@ -29,48 +30,26 @@ public class AreaModel implements Serializable {
     private List<EstudanteModel> estudantes;
 
 
+    public AreaModel(){}
 
-
-
-    public AreaModel( String name) {
-        this.name = name;
+    public AreaModel(UUID id, String nome) {
+        this.id = id;
+        this.nome = nome;
     }
-
-
 
     //getter e setters
-    public String getName() {
-        return name;
-    }
+    public UUID getId() { return id; }
+    public void setId(UUID id) { this.id = id; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
 
 
-    public List<VagaEstagioModel> getVagas() {
-        return vagas;
-    }
+    public List<VagaEstagioModel> getVagas() { return vagas; }
+    public void setVagas(List<VagaEstagioModel> vagas) { this.vagas = vagas; }
     
-    public void setVagas(List<VagaEstagioModel> vagas) {
-        this.vagas = vagas;
-    }
-    
-    public List<EstudanteModel> getEstudantes() {
-        return estudantes;
-    }
-    
-    public void setEstudantes(List<EstudanteModel> estudantes) {
-        this.estudantes = estudantes;
-    }
+    public List<EstudanteModel> getEstudantes() { return estudantes; }
+    public void setEstudantes(List<EstudanteModel> estudantes) { this.estudantes = estudantes; }
     
     
 }

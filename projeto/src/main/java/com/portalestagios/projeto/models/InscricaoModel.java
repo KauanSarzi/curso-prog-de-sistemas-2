@@ -2,7 +2,7 @@ package com.portalestagios.projeto.models;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -42,57 +42,37 @@ public class InscricaoModel implements Serializable {
     private EstudanteModel estudante; // OBJETO CRIADO COM O MESMOMNOME DO MAPPED BY
 
 
+    //CONSTRUTORES
+    public InscricaoModel() {}
 
-    //getters e setters
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
+    public InscricaoModel(UUID id, Date dataInscricao, String status, String mensagemApresentacao) {
         this.id = id;
-    }
-
-    public Date getDataInscricao() {
-        return dataInscricao;
-    }
-
-    public void setDataInscricao(Date dataInscricao) {
         this.dataInscricao = dataInscricao;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
         this.status = status;
-    }
-
-    public String getMensagemApresentacao() {
-        return mensagemApresentacao;
-    }
-
-    public void setMensagemApresentacao(String mensagemApresentacao) {
         this.mensagemApresentacao = mensagemApresentacao;
-    }
-
-    public VagaEstagioModel getVaga(){
-        return vaga;
-    }
-
-    public void setVaga(VagaEstagioModel vaga){
-        this.vaga = vaga;
         
     }
 
-    public EstudanteModel getEstudante() {
-        return estudante;
-    }
-    
-    public void setEstudante(EstudanteModel estudante) {
-        this.estudante = estudante;
-    }
+
+
+    //GETTER E SETTERS
+    public UUID getId() { return id; }
+    public void setId(UUID id) { this.id = id; }
+
+    public Date getDataInscricao() { return dataInscricao; }
+    public void setDataInscricao(Date dataInscricao) { this.dataInscricao = dataInscricao; }
+
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
+
+    public String getMensagemApresentacao() { return mensagemApresentacao; }
+    public void setMensagemApresentacao(String mensagemApresentacao) { this.mensagemApresentacao = mensagemApresentacao; }
+
+    public VagaEstagioModel getVaga(){ return vaga; }
+    public void setVaga(VagaEstagioModel vaga){ this.vaga = vaga; }
+
+    public EstudanteModel getEstudante() { return estudante; }
+    public void setEstudante(EstudanteModel estudante) { this.estudante = estudante; }
     
 
 

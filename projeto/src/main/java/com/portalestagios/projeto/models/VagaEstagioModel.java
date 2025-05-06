@@ -1,7 +1,7 @@
 package com.portalestagios.projeto.models;
 import jakarta.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -59,101 +59,50 @@ public class VagaEstagioModel implements Serializable {
     private List<AreaModel> areas;
 
 
+    //CONSTRUTORES
+    public VagaEstagioModel() {}
 
-
-
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
+    public VagaEstagioModel(UUID id, String titulo, String descricao, Boolean ativo, Double salario, int cargaHoraria, String modalidade) {
         this.id = id;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
         this.titulo = titulo;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public Date getDataPublicacao() {
-        return dataPublicacao;
-    }
-
-    public void setDataPublicacao(Date dataPublicacao) {
-        this.dataPublicacao = dataPublicacao;
-    }
-
-    public Boolean getAtivo() {
-        return ativo;
-    }
-
-    public void setAtivo(Boolean ativo) {
         this.ativo = ativo;
-    }
-
-    public Double getSalario() {
-        return salario;
-    }
-
-    public void setSalario(Double salario) {
         this.salario = salario;
-    }
-
-    public int getCargaHoraria() {
-        return cargaHoraria;
-    }
-
-    public void setCargaHoraria(int cargaHoraria) {
         this.cargaHoraria = cargaHoraria;
-    }
-
-
-    public String getModalidade() {
-        return modalidade;
-    }
-    
-    public void setModalidade(String modalidade) {
         this.modalidade = modalidade;
     }
+
+
+    //GETTERS E SETTERS
+    public UUID getId() { return id; }
+    public void setId(UUID id) { this.id = id; }
+
+    public String getTitulo() { return titulo; }
+    public void setTitulo(String titulo) { this.titulo = titulo; }
+
+    public String getDescricao() { return descricao; }
+    public void setDescricao(String descricao) { this.descricao = descricao; }
+
+    public Boolean getAtivo() { return ativo; }
+    public void setAtivo(Boolean ativo) { this.ativo = ativo; }
+
+    public Double getSalario() { return salario; }
+    public void setSalario(Double salario) { this.salario = salario; }
+
+    public int getCargaHoraria() { return cargaHoraria; }
+    public void setCargaHoraria(int cargaHoraria) { this.cargaHoraria = cargaHoraria; }
+
+    public String getModalidade() { return modalidade; }
+    public void setModalidade(String modalidade) { this.modalidade = modalidade; }
     
+    public EmpresaModel getEmpresa(){ return empresa; }
+    public void setEmpresa(EmpresaModel empresa){ this.empresa = empresa; }
 
-    public EmpresaModel getEmpresa(){
-        return empresa;
-    }
+    public List<InscricaoModel> getInscricaoVaga(){ return inscricaoVaga; }
+    public void setInscricaoVaga(List<InscricaoModel> inscricaoVaga) { this.inscricaoVaga = inscricaoVaga; }
 
-    public void setEmpresa(EmpresaModel empresa){
-        this.empresa = empresa;
-    }
-
-
-    public List<InscricaoModel> getInscricaoVaga(){
-        return inscricaoVaga;
-    }
-
-    public void setInscricaoVaga(List<InscricaoModel> inscricaoVaga) {
-        this.inscricaoVaga = inscricaoVaga;
-    }
-
-
-    public List<AreaModel> getAreas() {
-        return areas;
-    }
-    
-    public void setAreas(List<AreaModel> areas) {
-        this.areas = areas;
-    }
+    public List<AreaModel> getAreas() { return areas; }  
+    public void setAreas(List<AreaModel> areas) { this.areas = areas; }
     
 
     
