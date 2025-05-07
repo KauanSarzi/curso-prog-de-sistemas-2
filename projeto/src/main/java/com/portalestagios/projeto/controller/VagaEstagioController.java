@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/vagas")
 public class VagaEstagioController {
     private List<VagaEstagio> vagas;
 
@@ -21,7 +21,7 @@ public class VagaEstagioController {
        
     }
 
-    @GetMapping("/api/vagas")
+    @GetMapping
     public List<VagaEstagio> getVagas() {
         return vagas;
     }

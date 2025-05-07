@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.portalestagios.projeto.models.Estudante;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/estudantes")
 public class EstudanteController {
     private List<Estudante> estudantes;
 
@@ -19,7 +19,7 @@ public class EstudanteController {
         estudantes.add(new Estudante(3L, "Ana", "ana@email.com", 2022, "Direito", "202289234", "4º período"));
     }
 
-    @GetMapping("/api/estudantes")
+    @GetMapping
     public List<Estudante> getEstudantes() {
         return estudantes;
     }

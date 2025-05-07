@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/areas")
 public class AreaController {
     private List<Area> areas;
 
@@ -21,7 +21,7 @@ public class AreaController {
         areas.add(new Area(4L, "Administração"));
     }
 
-    @GetMapping("/api/areas")
+    @GetMapping
     public List<Area> getAreas() {
         return areas;
     }

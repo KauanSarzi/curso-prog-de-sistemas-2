@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/usuarios")
 public class UserController {
     private List<User> usuarios;
 
@@ -21,7 +21,7 @@ public class UserController {
         usuarios.add(new User(4L, "ana.costa", "4321"));
     }
 
-    @GetMapping("/api/usuarios")
+    @GetMapping
     public List<User> getUsuarios() {
         return usuarios;
     }
