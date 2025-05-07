@@ -1,9 +1,9 @@
 package com.portalestagios.projeto.dtos;
 
-import java.util.UUID;
+
 
 public record EmpresaDTO(
-    UUID id,
+    Long id,
     String nomeFantasia,
     String cnpj,
     String emailContato,

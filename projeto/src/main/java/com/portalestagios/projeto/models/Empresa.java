@@ -8,23 +8,23 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Column;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import java.io.Serializable;
-import java.util.List;
-import java.util.UUID;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
+import java.lang.Long;
+
+
 
 
 
 @Entity
 @Table(name = "TB_EMPRESA") //NOME DA CLASSE QUANDO FOR LEVADA A TABELA DA BASE DE DADOS
-public class EmpresaModel implements Serializable{
-    private static final long serialVersionUID = 1L;
+public class Empresa {
+
 
     
     @Id
     @GeneratedValue
-    private UUID id;
+    private Long id;
 
     @Column(nullable = false, unique = true) //cnpj é unico, e se nao existe cnpj nao existe empresa
     private String cnpj;
@@ -50,15 +50,15 @@ public class EmpresaModel implements Serializable{
 
     @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL, fetch = FetchType.LAZY) // O MAPPEDBY DEFINE QUEM É O RESPONSAVEL POR ESSE RELACIONAMENTO E O CASCADE FAZ COM QUE SEMPRE QUE EU FIZER ALTERAÇOES AMBAS ENTIDADES RELACIONADAS SOFRERAO ALTERAÇOES
    // @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)  // nesse caso é para se nao quiser retornar a empresa junto com a vaga
-    private List<VagaEstagioModel> vagasPublicadas;
+    private List<VagaEstagio> vagasPublicadas;
 
 
     
 
-    public EmpresaModel(){
+    public Empresa(){
     }
 
-    public EmpresaModel(UUID id, String cnpj, String nomeFantasia, String emailContato, String endereco, String descricao, String telefoneContato, String ramoAtuacao) {
+    public Empresa(Long id, String cnpj, String nomeFantasia, String emailContato, String endereco, String descricao, String telefoneContato, String ramoAtuacao) {
         this.id = id;
         this.cnpj = cnpj;
         this.nomeFantasia = nomeFantasia;
@@ -73,8 +73,8 @@ public class EmpresaModel implements Serializable{
 
 
 
-    public UUID getId() { return id; }
-    public void setId(UUID id) { this.id = id; }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
     
     public String getCnpj() { return cnpj; }
     public void setCnpj(String cnpj) { this.cnpj = cnpj; }
@@ -97,8 +97,8 @@ public class EmpresaModel implements Serializable{
     public String getRamoAtuacao() { return ramoAtuacao; }
     public void setRamoAtuacao(String ramoAtuacao) { this.ramoAtuacao = ramoAtuacao; }
 
-    public List<VagaEstagioModel> getVagasPublicadas() { return vagasPublicadas; }  
-    public void setVagasPublicadas(List<VagaEstagioModel> vagasPublicadas) { this.vagasPublicadas = vagasPublicadas; }
+    public List<VagaEstagio> getVagasPublicadas() { return vagasPublicadas; }  
+    public void setVagasPublicadas(List<VagaEstagio> vagasPublicadas) { this.vagasPublicadas = vagasPublicadas; }
 
 
     

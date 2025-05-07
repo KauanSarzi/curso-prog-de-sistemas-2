@@ -1,21 +1,20 @@
 package com.portalestagios.projeto.models;
 import jakarta.persistence.*;
 
-import java.io.Serializable;
 import java.util.Date;
-import java.util.UUID;
+import java.lang.Long;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @Entity
 @Table(name = "TB_INSCRICAO")
-public class InscricaoModel implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Inscricao {
+
 
     @Id
     @GeneratedValue 
-    private UUID id;
+    private Long id;
 
 
     @Column(nullable = false) 
@@ -32,20 +31,20 @@ public class InscricaoModel implements Serializable {
     @ManyToOne
     @JoinColumn(name = "vaga_id") //CHAVE ESTRANGEIRA PARA FAZER O RELACIONAMENTO
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) 
-    private VagaEstagioModel vaga; // OBJETO CRIADO COM O MESMOMNOME DO MAPPED BY
+    private VagaEstagio vaga; // OBJETO CRIADO COM O MESMOMNOME DO MAPPED BY
 
     
     //RELAÇAO COM ESTUDANTE
     @ManyToOne
     @JoinColumn(name = "estudante_id") //CHAVE ESTRANGEIRA PARA FAZER O RELACIONAMENTO
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) 
-    private EstudanteModel estudante; // OBJETO CRIADO COM O MESMOMNOME DO MAPPED BY
+    private Estudante estudante; // OBJETO CRIADO COM O MESMOMNOME DO MAPPED BY
 
 
     //CONSTRUTORES
-    public InscricaoModel() {}
+    public Inscricao() {}
 
-    public InscricaoModel(UUID id, Date dataInscricao, String status, String mensagemApresentacao) {
+    public Inscricao(Long id, Date dataInscricao, String status, String mensagemApresentacao) {
         this.id = id;
         this.dataInscricao = dataInscricao;
         this.status = status;
@@ -56,8 +55,8 @@ public class InscricaoModel implements Serializable {
 
 
     //GETTER E SETTERS
-    public UUID getId() { return id; }
-    public void setId(UUID id) { this.id = id; }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
     public Date getDataInscricao() { return dataInscricao; }
     public void setDataInscricao(Date dataInscricao) { this.dataInscricao = dataInscricao; }
@@ -68,16 +67,12 @@ public class InscricaoModel implements Serializable {
     public String getMensagemApresentacao() { return mensagemApresentacao; }
     public void setMensagemApresentacao(String mensagemApresentacao) { this.mensagemApresentacao = mensagemApresentacao; }
 
-    public VagaEstagioModel getVaga(){ return vaga; }
-    public void setVaga(VagaEstagioModel vaga){ this.vaga = vaga; }
+    public VagaEstagio getVaga(){ return vaga; }
+    public void setVaga(VagaEstagio vaga){ this.vaga = vaga; }
 
-    public EstudanteModel getEstudante() { return estudante; }
-    public void setEstudante(EstudanteModel estudante) { this.estudante = estudante; }
+    public Estudante getEstudante() { return estudante; }
+    public void setEstudante(Estudante estudante) { this.estudante = estudante; }
     
-
-
-
-
 
     
 }

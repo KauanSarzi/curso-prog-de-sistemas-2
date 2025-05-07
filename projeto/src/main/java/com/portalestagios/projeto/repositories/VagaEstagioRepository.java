@@ -1,16 +1,13 @@
 package com.portalestagios.projeto.repositories;
-import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import com.portalestagios.projeto.models.VagaEstagio;
 
+public interface VagaEstagioRepository extends JpaRepository<VagaEstagio, Long> {
 
-import com.portalestagios.projeto.models.VagaEstagioModel;
+    VagaEstagio findVagaEstagioModelByTitulo(String titulo); //query(interna) para buscar na base de dados uma determinada vaga de estagio e seu titulo 
 
-public interface VagaEstagioRepository extends JpaRepository<VagaEstagioModel, UUID> {
-
-    VagaEstagioModel findVagaEstagioModelByTitulo(String titulo); //query(interna) para buscar na base de dados uma determinada vaga de estagio e seu titulo 
-
-    VagaEstagioModel findVagaEstagioModelById(UUID id);
+    VagaEstagio findVagaEstagioModelById(Long id);
 
 
     //@Query PARA CONSULTAS MAIS COMPLEXAS

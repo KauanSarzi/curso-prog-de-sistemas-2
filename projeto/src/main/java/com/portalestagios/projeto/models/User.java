@@ -1,24 +1,19 @@
 package com.portalestagios.projeto.models;
 
-import java.io.Serializable;
-import java.util.UUID;
 
+import java.lang.Long;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "TB_USER")
-public class UserModel implements Serializable {
-    private static final long serialVersionUID = 1L;
-
+public class User {
     @Id
     @GeneratedValue
-    private UUID id;
+    private Long id;
 
     @Column(nullable = false, unique = true)
     private String login;
@@ -30,9 +25,9 @@ public class UserModel implements Serializable {
     // @Column(nullable = false)
    //  private TipoAcesso tipoacesso; ou collections singleton
 
-    public UserModel(){}
+    public User(){}
 
-    public UserModel(UUID id, String login, String senha) {
+    public User(Long id, String login, String senha) {
         this.id = id;
         this.login = login;
         this.senha = senha;
@@ -40,8 +35,8 @@ public class UserModel implements Serializable {
 
 
   // Getters e Setters
-    public UUID getId() { return id; }
-    public void setId(UUID id) { this.id = id; }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
     public String getLogin() { return login; }
     public void setLogin(String login) { this.login = login; }

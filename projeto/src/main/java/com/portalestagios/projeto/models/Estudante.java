@@ -1,19 +1,18 @@
 package com.portalestagios.projeto.models;
 import jakarta.persistence.*;
-import java.io.Serializable;
 import java.util.List;
-import java.util.UUID;
+import java.lang.Long;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "TB_ESTUDANTE")
-public class EstudanteModel implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Estudante{
+   
 
     @Id
     @GeneratedValue
-    private UUID id;
+    private Long id;
 
     @Column(nullable = false)
     private String nome;
@@ -37,20 +36,20 @@ public class EstudanteModel implements Serializable {
     //RELAÇAO COM INSCRIÇAO
     @OneToMany(mappedBy = "estudante", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //evita com que a resposta json do estudante tenha uma lista completa de inscriçoe, e tbm evita loop
-    private List<InscricaoModel> inscricoes;
+    private List<Inscricao> inscricoes;
 
 
     //RELAÇAO COM AREAS
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "tb_estudante_area", joinColumns = @JoinColumn(name = "estudante_id"), inverseJoinColumns = @JoinColumn(name = "area_id"))
-    private List<AreaModel> areas;
+    private List<Area> areas;
 
 
 
-    public EstudanteModel() {
+    public Estudante() {
     }
 
-    public EstudanteModel(UUID id, String nome, String email, int anoIngresso, String curso, String matricula, String periodoAtual) {
+    public Estudante(Long id, String nome, String email, int anoIngresso, String curso, String matricula, String periodoAtual) {
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -61,8 +60,8 @@ public class EstudanteModel implements Serializable {
     }
 
     
-    public UUID getId() { return id; }
-    public void setId(UUID id) { this.id = id; }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome; }
@@ -82,11 +81,11 @@ public class EstudanteModel implements Serializable {
     public String getPeriodoAtual() { return periodoAtual; }
     public void setPeriodoAtual(String periodoAtual) { this.periodoAtual = periodoAtual; }
     
-    public List<InscricaoModel> getInscricoes() { return inscricoes; }   
-    public void setInscricoes(List<InscricaoModel> inscricoes) { this.inscricoes = inscricoes; }
+    public List<Inscricao> getInscricoes() { return inscricoes; }   
+    public void setInscricoes(List<Inscricao> inscricoes) { this.inscricoes = inscricoes; }
 
-    public List<AreaModel> getAreas() { return areas; }  
-    public void setAreas(List<AreaModel> areas) { this.areas = areas; }
+    public List<Area> getAreas() { return areas; }  
+    public void setAreas(List<Area> areas) { this.areas = areas; }
     
 
 
